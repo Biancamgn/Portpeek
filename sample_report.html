@@ -1,0 +1,70 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>portpeek report</title><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap' rel='stylesheet'><style>
+:root {
+  --bg: #0f0d0b; --card: #1a1714; --card-lighter: #221f1a;
+  --orange: #d4874d; --orange-glow: #e8995a; --orange-dim: #a66a3a;
+  --cream: #f5e6d3; --text: #c4b5a3; --text-dim: #8a7e70; --white: #faf3eb;
+  --dash: 1.5px dashed rgba(212,135,77,0.22);
+  --radius: 16px; --radius-sm: 10px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif; background: var(--bg);
+  color: var(--text); line-height: 1.7; padding: 40px 20px 72px;
+}
+h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--cream); font-weight: 600; }
+.wrap { max-width: 980px; margin: 0 auto; }
+.report-head { display: flex; align-items: center; gap: 16px; margin-bottom: 6px; }
+.brand-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dim));
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 700; font-size: 24px; color: var(--bg);
+}
+h1 { font-size: 30px; }
+h1 .accent { color: var(--orange); font-style: italic; }
+.sub {
+  color: var(--text-dim); font-size: 13px; margin: 6px 0 30px;
+  letter-spacing: .3px; padding-left: 64px;
+}
+.sub b { color: var(--cream); font-weight: 600; }
+.cards { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+.card {
+  background: var(--card); border: var(--dash); border-radius: var(--radius);
+  padding: 18px 22px; min-width: 118px; flex: 1;
+}
+.card .n { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: var(--cream); line-height: 1; }
+.card .l {
+  font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+  letter-spacing: 1.5px; margin-top: 8px; font-weight: 600;
+}
+.host {
+  background: var(--card); border: var(--dash); border-left: 3px solid var(--orange);
+  border-radius: var(--radius-sm); padding: 24px 26px; margin-bottom: 20px;
+}
+.host h2 { font-size: 20px; margin-bottom: 4px; }
+.host .meta { color: var(--text-dim); font-size: 13px; margin-bottom: 16px; }
+.host .meta b { color: var(--orange); font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(212,135,77,0.12); vertical-align: top; }
+th {
+  color: var(--orange); font-weight: 600; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 1.5px;
+}
+td { color: var(--text); }
+td .port { color: var(--cream); font-weight: 600; }
+td .ver { color: var(--text-dim); font-style: italic; }
+.badge {
+  display: inline-block; padding: 3px 12px; border-radius: 50px;
+  font-size: 10px; font-weight: 700; letter-spacing: .6px; color: var(--bg);
+}
+.vuln { font-size: 13px; margin: 8px 0; }
+.vuln .cve { color: var(--orange); font-family: 'DM Sans', monospace; font-size: 12px; letter-spacing: .3px; }
+.vuln .title { color: var(--cream); }
+.note { color: var(--text-dim); font-size: 12px; margin-top: 2px; }
+.none { color: var(--text-dim); font-style: italic; }
+footer {
+  color: var(--text-dim); font-size: 12px; margin-top: 40px; text-align: center;
+  border-top: var(--dash); padding-top: 20px; letter-spacing: .3px;
+}
+footer .accent { color: var(--orange); }
+</style></head><body><div class='wrap'><div class='report-head'><div class='brand-icon'>P</div><h1>port<span class='accent'>peek</span> — Scan Report</h1></div><div class='sub'>Target <b>192.168.59.20</b> &nbsp;&middot;&nbsp; scan type <b>syn</b> &nbsp;&middot;&nbsp; generated 2026-08-19 14:23:47</div><div class='cards'><div class='card'><div class='n'>1</div><div class='l'>hosts</div></div><div class='card'><div class='n'>4</div><div class='l'>findings</div></div><div class='card'><div class='n' style='color:#d4874d'>3</div><div class='l'>high</div></div><div class='card'><div class='n' style='color:#c9962f'>1</div><div class='l'>medium</div></div></div><div class='host'><h2>192.168.59.20</h2><div class='meta'>found via <b>icmp</b> &nbsp;&middot;&nbsp; 08:00:27:81:36:36 &nbsp;&middot;&nbsp; OS guess: <b>Linux / Unix</b></div><table><thead><tr><th>Port</th><th>Service</th><th>Version</th><th>Findings</th></tr></thead><tbody><tr><td><span class='port'>21/tcp</span></td><td>ftp</td><td><span class='ver'>&mdash;</span></td><td><span class='none'>none</span></td></tr><tr><td><span class='port'>22/tcp</span></td><td>ssh</td><td><span class='ver'>OpenSSH 4.7</span></td><td><div class='vuln'><span class="badge" style="background:#d4874d">HIGH</span> <span class='cve'>CVE-2008-0166</span> <span class='title'>Debian OpenSSL predictable PRNG (affects OpenSSH keys)</span><div class='note'>Keys generated on affected Debian/Ubuntu systems in this era come from a tiny keyspace and are brute-forceable.</div></div></td></tr><tr><td><span class='port'>23/tcp</span></td><td>telnet</td><td><span class='ver'>&mdash;</span></td><td><div class='vuln'><span class="badge" style="background:#c9962f">MEDIUM</span> <span class='title'>Telnet service exposed</span><div class='note'>Telnet transmits credentials in cleartext. Its mere presence is a finding; replace with SSH.</div></div></td></tr><tr><td><span class='port'>25/tcp</span></td><td>smtp</td><td><span class='ver'>Postfix</span></td><td><span class='none'>none</span></td></tr><tr><td><span class='port'>80/tcp</span></td><td>http</td><td><span class='ver'>Apache 2.2.8</span></td><td><div class='vuln'><span class="badge" style="background:#d4874d">HIGH</span> <span class='cve'>CVE-2010-0425</span> <span class='title'>Apache 2.2.8 outdated — multiple known issues</span><div class='note'>This branch is long past end-of-life and carries several disclosed vulnerabilities; upgrade strongly advised.</div></div></td></tr><tr><td><span class='port'>139/tcp</span></td><td>netbios-ssn</td><td><span class='ver'>&mdash;</span></td><td><span class='none'>none</span></td></tr><tr><td><span class='port'>445/tcp</span></td><td>microsoft-ds</td><td><span class='ver'>&mdash;</span></td><td><span class='none'>none</span></td></tr><tr><td><span class='port'>2121/tcp</span></td><td>ccproxy-ftp</td><td><span class='ver'>ProFTPD 1.3.1</span></td><td><div class='vuln'><span class="badge" style="background:#d4874d">HIGH</span> <span class='cve'>CVE-2010-4221</span> <span class='title'>ProFTPD 1.3.x pre-auth stack overflow</span><div class='note'>A stack overflow in the Telnet IAC handling can lead to remote code execution before authentication.</div></div></td></tr><tr><td><span class='port'>3306/tcp</span></td><td>mysql</td><td><span class='ver'>5.0.51</span></td><td><span class='none'>none</span></td></tr><tr><td><span class='port'>5900/tcp</span></td><td>vnc</td><td><span class='ver'>RFB 003.003</span></td><td><span class='none'>none</span></td></tr><tr><td><span class='port'>6667/tcp</span></td><td>irc</td><td><span class='ver'>&mdash;</span></td><td><span class='none'>none</span></td></tr><tr><td><span class='port'>8180/tcp</span></td><td>http</td><td><span class='ver'>&mdash;</span></td><td><span class='none'>none</span></td></tr></tbody></table></div><footer>Generated by <span class='accent'>portpeek</span> &middot; lab / educational use only &middot; findings come from an offline curated table, not a live CVE feed.</footer></div></body></html>
