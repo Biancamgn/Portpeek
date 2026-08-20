@@ -1,0 +1,64 @@
+{
+  "_comment": "Maps well-known ports to a default service guess, and provides regex patterns to pull a product+version out of a grabbed banner. Ports are strings so JSON stays valid.",
+
+  "default_ports": {
+    "21":   "ftp",
+    "22":   "ssh",
+    "23":   "telnet",
+    "25":   "smtp",
+    "53":   "domain",
+    "80":   "http",
+    "110":  "pop3",
+    "111":  "rpcbind",
+    "139":  "netbios-ssn",
+    "143":  "imap",
+    "443":  "https",
+    "445":  "microsoft-ds",
+    "512":  "exec",
+    "513":  "login",
+    "514":  "shell",
+    "993":  "imaps",
+    "995":  "pop3s",
+    "1099": "rmiregistry",
+    "1433": "ms-sql-s",
+    "1524": "ingreslock",
+    "2049": "nfs",
+    "2121": "ccproxy-ftp",
+    "3306": "mysql",
+    "3389": "ms-wbt-server",
+    "5432": "postgresql",
+    "5900": "vnc",
+    "6000": "x11",
+    "6667": "irc",
+    "8009": "ajp13",
+    "8080": "http-proxy",
+    "8180": "http"
+  },
+
+  "probes": {
+    "_comment": "Optional bytes to send to coax a banner out of a port that stays silent on connect. Keys are ports.",
+    "80":   "GET / HTTP/1.0\r\n\r\n",
+    "8080": "GET / HTTP/1.0\r\n\r\n",
+    "8180": "GET / HTTP/1.0\r\n\r\n",
+    "443":  "GET / HTTP/1.0\r\n\r\n"
+  },
+
+  "version_patterns": [
+    { "service": "ssh",    "regex": "SSH-[\\d.]+-(OpenSSH)[_ ]([\\w.]+)" },
+    { "service": "ftp",    "regex": "220.*?(vsFTPd) ([\\d.]+)" },
+    { "service": "ftp",    "regex": "220.*?(ProFTPD) ([\\d.]+)" },
+    { "service": "smtp",   "regex": "220.*?(Postfix)" },
+    { "service": "smtp",   "regex": "(Exim) ([\\d.]+)" },
+    { "service": "http",   "regex": "Server: (Apache)/([\\d.]+)" },
+    { "service": "http",   "regex": "Server: (nginx)/([\\d.]+)" },
+    { "service": "http",   "regex": "Server: .*?(Microsoft-IIS)/([\\d.]+)" },
+    { "service": "http",   "regex": "(Apache)/([\\d.]+)" },
+    { "service": "mysql",  "regex": "([45]\\.[\\d.]+)-\\w*.*?mysql" },
+    { "service": "mysql",  "regex": "\\x0a([45]\\.[\\d.]+)" },
+    { "service": "telnet", "regex": "(Ubuntu)" },
+    { "service": "smb",    "regex": "(Samba) ([\\d.]+)" },
+    { "service": "irc",    "regex": "(UnrealIRCd)" },
+    { "service": "vnc",    "regex": "(RFB) ([\\d.]+)" },
+    { "service": "distccd","regex": "(distccd)" }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_comment": "Small hand-built offline lookup that flags service versions known to be outdated or vulnerable. This is NOT a live CVE feed; it's a curated teaching table tuned to the Metasploitable/Win7 lab. 'match' is checked against the '<product> <version>' string (case-insensitive substring). Severity: info < low < medium < high < critical.",
+
+  "entries": [
+    {
+      "match": "vsftpd 2.3.4",
+      "cve": "CVE-2011-2523",
+      "severity": "critical",
+      "title": "vsftpd 2.3.4 backdoor command execution",
+      "note": "This exact build shipped with a backdoor that opens a root shell on port 6200 when a username ending in ':)' is sent."
+    },
+    {
+      "match": "unrealircd",
+      "cve": "CVE-2010-2075",
+      "severity": "critical",
+      "title": "UnrealIRCd 3.2.8.1 backdoor",
+      "note": "The distributed tarball was trojaned; a crafted message runs arbitrary commands as the IRC user."
+    },
+    {
+      "match": "distccd",
+      "cve": "CVE-2004-2687",
+      "severity": "critical",
+      "title": "distccd remote code execution",
+      "note": "distcc's daemon allows remote attackers to run arbitrary commands via compilation jobs when not restricted."
+    },
+    {
+      "match": "samba 3.0",
+      "cve": "CVE-2007-2447",
+      "severity": "critical",
+      "title": "Samba 3.0.x 'username map script' command injection",
+      "note": "Shell metacharacters in the username field are passed to /bin/sh when the username map script option is set."
+    },
+    {
+      "match": "openssh 4.7",
+      "cve": "CVE-2008-0166",
+      "severity": "high",
+      "title": "Debian OpenSSL predictable PRNG (affects OpenSSH keys)",
+      "note": "Keys generated on affected Debian/Ubuntu systems in this era come from a tiny keyspace and are brute-forceable."
+    },
+    {
+      "match": "proftpd 1.3.1",
+      "cve": "CVE-2010-4221",
+      "severity": "high",
+      "title": "ProFTPD 1.3.x pre-auth stack overflow",
+      "note": "A stack overflow in the Telnet IAC handling can lead to remote code execution before authentication."
+    },
+    {
+      "match": "apache 2.2.8",
+      "cve": "CVE-2010-0425",
+      "severity": "high",
+      "title": "Apache 2.2.8 outdated — multiple known issues",
+      "note": "This branch is long past end-of-life and carries several disclosed vulnerabilities; upgrade strongly advised."
+    },
+    {
+      "match": "mysql 5.0",
+      "cve": "N/A",
+      "severity": "medium",
+      "title": "MySQL 5.0.x end-of-life",
+      "note": "MySQL 5.0 reached end-of-life in 2012 and no longer receives security fixes."
+    },
+    {
+      "match": "microsoft-iis 7.5",
+      "cve": "N/A",
+      "severity": "medium",
+      "title": "IIS 7.5 (Windows 7 / Server 2008 R2 era) outdated",
+      "note": "Underlying OS is out of mainstream support; patch level should be verified against current advisories."
+    },
+    {
+      "match": "telnet",
+      "cve": "N/A",
+      "severity": "medium",
+      "title": "Telnet service exposed",
+      "note": "Telnet transmits credentials in cleartext. Its mere presence is a finding; replace with SSH."
+    }
+  ]
+}
